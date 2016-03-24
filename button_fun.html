@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<meta charset='utf-8'>
+	<title>Button Fun</title>
+	<style>
+		#red {
+			background-color: red;
+		}
+		#blue {
+			background-color: blue;
+		}
+		#green {
+			background-color: green;
+		}
+
+	</style>
+</head>
+<body>
+	<button id="someButton">This is Some Button</button>
+	<button id="red" onclick='turn'>CLICK ME</button>
+	<script>
+		//here we are getting the button element by its id and then storing the element in the variable button
+		var button = document.getElementById("someButton");
+		//now you run methods on the button
+		//there is a js method called "addEventListener" that does exactly what you expect
+		//it adds a listener which takes 2 parameters
+		//1) the event to listen for
+		//2) the list of instruction to run once the event is triggered (callback)
+		button.addEventListener("click", whatToDoOnClick);
+		//here we define the whatToDoOnClick function
+		function whatToDoOnClick(){
+			alert("You did it!");
+		}
+
+		var redButton = document.getElementById("red");
+		redButton.addEventListener('click', turn);
+		function turn(){
+			if(document.getElementById('red').style.backgroundColor == 'red'){
+				document.getElementById('red').style.backgroundColor = 'blue';
+			}
+			else {
+				document.getElementById('red').style.backgroundColor = 'red';
+			}
+		}
+		redButton.addEventListener('mouseover', begreen);
+		redButton.addEventListener('mouseout', bered)
+		function begreen(){
+			document.getElementById('red').style.backgroundColor = 'green';
+		}
+		function bered(){
+			document.getElementById('red').style.backgroundColor = 'red';
+		}
+
+
+	</script>
+</body>
+</html>

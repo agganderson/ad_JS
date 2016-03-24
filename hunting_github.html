@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<meta charset='utf-8'>
+	<title>Hunting Github</title>
+	<script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
+	<script>
+	$(document).ready(function(){
+		$('button').click(function(){
+			$.get("https://api.github.com/users/agganderson", displayName)
+			function displayName(data) {
+			  $('#gitshit').append(data.login);
+			};	
+		});
+	})
+
+	</script>
+</head>
+<body>
+
+	<button>Get your info</button>
+	<p id="gitshit"></p>
+
+
+</body>
+</html>

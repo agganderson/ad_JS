@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+	<meta charset='utf-8'>
+	<title>Javascript My Library</title>
+
+	<script>
+
+	var _ = {
+		//recreate with for loops and such
+		maps : function(arr, callback){
+			var newArr = [];
+			for(var i = 0; i < arr.length; i++){
+				newArr.push(callback(arr[i]));
+			}
+			return newArr;
+		},
+		reduce : function(arr, callback, starter){
+			for(var index in arr){
+				starter = callback(arr[index], starter);
+			}
+			return starter;
+		},
+		findIt : function(arr, callback){
+			for(var i = 0; i < arr.length; i++){
+				if(callback(arr[i]) === true){
+				return arr[i];
+				}
+			}
+		},
+		reject : function(arr, callback){
+		    var newArr = [];
+		    for(var i = 0; i < arr.length; i++){
+		        if(callback(arr[i]) === false){
+		            newArr.push(arr[i]);
+		        }
+		    }
+		    return newArr;
+		}
+	};
+
+	var evens = _.maps([1, 2, 3, 4, 5, 6], function(num){ return num * 2; });
+	var odds = _.findIt([2, 5, 7, 8, 9], function(num){ return num % 2 !== 0; });
+	var blah = _.filter([1, 2, 4, 7, 10, 13], function(num){ return num % 2 === 0; });
+	var arg = _.reject([2, 6, 7, 10, 13], function(num){ return num % 2 !== 0; });
+	var one = _.reduce([1, 2, 3, 4, 5], function(memo, num){ return memo + num; }, 0);
+
+	</script>
+	
+</head>
+<body>
+	<h1>SUCH FUN</h1>
+</body>
+</html>
